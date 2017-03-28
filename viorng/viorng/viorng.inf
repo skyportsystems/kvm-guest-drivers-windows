@@ -1,15 +1,8 @@
 ;/*++
 ;
-;Copyright (c) 2014-2016 Red Hat Inc.
+;Copyright (c) 2017 Skyport Systems Inc.
 ;
-;Module Name:
-;    viorng.inf
-;
-;Abstract:
-;
-;Installation Notes:
-;    Using Devcon: Type "devcon install viorng.inf PCI\VEN_1AF4&DEV_1005&SUBSYS_00041AF4&REV_00" or
-;                       "devcon install viorng.inf PCI\VEN_1AF4&DEV_1044&SUBSYS_11001AF4&REV_01" to install
+;Skyport Random Number Generator driver setup information file
 ;
 ;--*/
 
@@ -17,7 +10,7 @@
 Signature       = "$WINDOWS NT$"
 Class           = System
 ClassGuid       = {4d36e97d-e325-11ce-bfc1-08002be10318}
-Provider        = %RedHatMfg%
+Provider        = %SkyportSystems%
 CatalogFile     = viorng.cat
 PnpLockdown     = 1
 DriverVer       = 02/20/2013,1.0.0.0
@@ -36,9 +29,9 @@ viorng.sys = 1,,
 ; ---------------
 
 [Manufacturer]
-%RedHatMfg% = RedHat,NT$ARCH$
+%SkyportSystems% = Standard,NT$ARCH$
 
-[RedHat.NT$ARCH$]
+[Standard.NT$ARCH$]
 %VirtRng.DeviceDesc% = VirtRng_Device, PCI\VEN_1AF4&DEV_1005&SUBSYS_00041AF4&REV_00
 %VirtRng.DeviceDesc% = VirtRng_Device, PCI\VEN_1AF4&DEV_1044&SUBSYS_11001AF4&REV_01
 
@@ -118,7 +111,7 @@ KmdfService = VirtRng, VirtRng_wdfsect
 KmdfLibraryVersion = $KMDFVERSION$
 
 [Strings]
-RedHatMfg           = "Red Hat, Inc."
+SkyportSystems      = "Skyport Systems Inc."
 DiskName            = "VirtIO RNG Installation Disk"
 VirtRng.DeviceDesc  = "VirtIO RNG Device"
 VirtRng.Service     = "VirtIO RNG Service"
