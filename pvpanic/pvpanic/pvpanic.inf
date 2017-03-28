@@ -1,14 +1,8 @@
 ;/*++
 ;
-;Copyright (c) 2015-2016 Red Hat Inc.
+;Copyright (c) 2017 Skyport Systems Inc.
 ;
-;Module Name:
-;    pvpanic.inf
-;
-;Abstract:
-;
-;Installation Notes:
-;    Using Devcon: Type "devcon install pvpanic.inf ACPI\QEMU0001" to install
+;Skyport panic driver setup information file
 ;
 ;--*/
 
@@ -16,7 +10,7 @@
 Signature       = "$WINDOWS NT$"
 Class           = System
 ClassGuid       = {4d36e97d-e325-11ce-bfc1-08002be10318}
-Provider        = %RedHatMfg%
+Provider        = %SkyportSystems%
 CatalogFile     = pvpanic.cat
 PnpLockdown     = 1
 DriverVer       = 02/20/2015,1.0.0.0
@@ -35,9 +29,9 @@ pvpanic.sys = 1,,
 ; ---------------
 
 [Manufacturer]
-%RedHatMfg% = RedHat,NT$ARCH$
+%SkyportSystems% = Standard,NT$ARCH$
 
-[RedHat.NT$ARCH$]
+[Standard.NT$ARCH$]
 %PVPanic.DeviceDesc% = PVPanic_Device, ACPI\QEMU0001
 
 [PVPanic_Device.NT]
@@ -88,7 +82,7 @@ KmdfService = PVPanic, PVPanic_wdfsect
 KmdfLibraryVersion = $KMDFVERSION$
 
 [Strings]
-RedHatMfg           = "Red Hat, Inc."
+SkyportSystems      = "Skyport Systems Inc."
 DiskName            = "QEMU PVPanic Installation Disk"
 PVPanic.DeviceDesc  = "QEMU PVPanic Device"
 PVPanic.Service     = "QEMU PVPanic Service"
