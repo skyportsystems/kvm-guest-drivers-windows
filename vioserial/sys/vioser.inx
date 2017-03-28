@@ -1,15 +1,8 @@
 ;/*++
 ;
-;Copyright (c) 2010-2016 Red Hat Inc.
+;Copyright (c) 2017 Skyport Systems Inc.
 ;
-;Module Name:
-;    vioser.inf
-;
-;Abstract:
-;
-;Installation Notes:
-;    Using Devcon: Type "devcon install vioser.inf PCI\VEN_1AF4&DEV_1003&SUBSYS_00031AF4&REV_00" or
-;                       "devcon install vioser.inf PCI\VEN_1AF4&DEV_1043&SUBSYS_11001AF4&REV_01" to install
+;Skyport VirtIO serial driver setup information file
 ;
 ;--*/
 
@@ -17,7 +10,7 @@
 Signature="$WINDOWS NT$"
 Class=System
 ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318}
-Provider=%REDHAT%
+Provider=%SkyportSystems%
 DriverVer=02/22/2010,6.0.1000.10000
 CatalogFile=vioser.cat
 DriverPackageType = PlugAndPlay
@@ -39,7 +32,7 @@ vioser.sys  = 1,,
 ;*****************************************
 
 [Manufacturer]
-%REDHAT%=VirtioSerial,NT$ARCH$
+%SkyportSystems%=VirtioSerial,NT$ARCH$
 
 [VirtioSerial.NT$ARCH$]
 ;
@@ -100,7 +93,7 @@ KmdfService =  VirtioSerial, VirtioSerial_wdfsect
 KmdfLibraryVersion = $KMDFVERSION$
 
 [Strings]
-REDHAT = "Red Hat, Inc."
+SkyportSystems = "Skyport Systems Inc."
 DiskId1 = "VirtIO Serial Installation Disk #1"
 VirtioSerial.DeviceDesc = "VirtIO Serial Driver"
 VirtioSerial.ServiceDesc = "VirtIO Serial Service"

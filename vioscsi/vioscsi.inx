@@ -1,15 +1,8 @@
 ;/*++
 ;
-;Copyright (c) 2012-2016 Red Hat Inc.
+;Copyright (c) 2017 Skyport Systems Inc.
 ;
-;Module Name:
-;    vioscsi.inf
-;
-;Abstract:
-;
-;Installation Notes:
-;    Using Devcon: Type "devcon install vioscsi.inf PCI\VEN_1AF4&DEV_1004&SUBSYS_00081AF4&REV_00" or
-;                       "devcon install vioscsi.inf PCI\VEN_1AF4&DEV_1048&SUBSYS_11001AF4&REV_01" to install
+;Skyport VirtIO SCSI controller driver setup information file
 ;
 ;--*/
 
@@ -17,11 +10,11 @@
 Signature="$Windows NT$"
 Class=SCSIAdapter
 ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
-Provider=%RHEL%
+Provider=%SkyportSystems%
 DriverVer=05/03/2010,6.0.6001.16640
 CatalogFile=vioscsi.cat
 DriverPackageType = PlugAndPlay
-DriverPackageDisplayName = %RHELScsi.DeviceDesc%
+DriverPackageDisplayName = %SkyportSystemsScsi.DeviceDesc%
 
 ;
 ; Source file information
@@ -45,11 +38,11 @@ vioscsi_Files_Driver = 12
 ;
 
 [Manufacturer]
-%RHEL%   = RHEL,NT$ARCH$
+%SkyportSystems%   = SkyportSystems,NT$ARCH$
 
-[RHEL.NT$ARCH$]
-%RHELScsi.DeviceDesc% = rhelscsi_inst, PCI\VEN_1AF4&DEV_1004&SUBSYS_00081AF4&REV_00
-%RHELScsi.DeviceDesc% = rhelscsi_inst, PCI\VEN_1AF4&DEV_1048&SUBSYS_11001AF4&REV_01
+[SkyportSystems.NT$ARCH$]
+%SkyportSystemsScsi.DeviceDesc% = rhelscsi_inst, PCI\VEN_1AF4&DEV_1004&SUBSYS_00081AF4&REV_00
+%SkyportSystemsScsi.DeviceDesc% = rhelscsi_inst, PCI\VEN_1AF4&DEV_1048&SUBSYS_11001AF4&REV_01
 
 ;
 ; General installation section
@@ -105,9 +98,9 @@ HKR, "Interrupt Management\Affinity Policy", DevicePriority, 0x00010001, 3
 ;
 ; Localizable Strings
 ;
-diskId1 = "Red Hat VirtIO SCSI pass-through controller Installation Disk"
-RHELScsi.DeviceDesc = "Red Hat VirtIO SCSI pass-through controller"
-RHEL = "Red Hat, Inc."
+diskId1 = "Skyport Systems VirtIO SCSI pass-through controller Installation Disk"
+SkyportSystemsScsi.DeviceDesc = "Skyport Systems VirtIO SCSI pass-through controller"
+SkyportSystems = "Skyport Systems Inc."
 
 ;
 ; Non-Localizable Strings
