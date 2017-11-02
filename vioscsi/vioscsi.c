@@ -41,6 +41,7 @@ HW_INITIALIZE        VioScsiHwInitialize;
 HW_BUILDIO           VioScsiBuildIo;
 HW_STARTIO           VioScsiStartIo;
 HW_FIND_ADAPTER      VioScsiFindAdapter;
+//PVIRTUAL_HW_FIND_ADAPTER VioScsiFindAdapter;
 HW_RESET_BUS         VioScsiResetBus;
 HW_ADAPTER_CONTROL   VioScsiAdapterControl;
 HW_INTERRUPT         VioScsiInterrupt;
@@ -274,6 +275,7 @@ DriverEntry(
     hwInitData.MapBuffers               = STOR_MAP_NON_READ_WRITE_BUFFERS;
 
 #if (NTDDI_VERSION > NTDDI_WIN7)
+	hwInitData.FeatureSupport = STOR_FEATURE_VIRTUAL_MINIPORT;
     /* Specify support/use SRB Extension for Windows 8 and up */
     hwInitData.SrbTypeFlags = SRB_TYPE_FLAG_STORAGE_REQUEST_BLOCK;
 #endif
@@ -357,6 +359,11 @@ ENTER_FN();
     if(adaptExt->dump_mode) {
         ConfigInfo->NumberOfPhysicalBreaks  = 8;
     } else {
+		// The following is necessary to make SDV happy
+		if (adaptExt->scsi_config.seg_max == SP_UNINITIALIZED_VALUE)
+		{
+			adaptExt->scsi_config.seg_max = MAX_PHYS_SEGMENTS + 1;
+		}
         ConfigInfo->NumberOfPhysicalBreaks  = min((MAX_PHYS_SEGMENTS + 1), adaptExt->scsi_config.seg_max);
     }
     ConfigInfo->MaximumTransferLength       = 0x00FFFFFF;
@@ -403,6 +410,7 @@ ENTER_FN();
             RhelDbgPrint(TRACE_LEVEL_WARNING, ("Multiqueue can only use at most one queue per cpu."));
             adaptExt->num_queues = max_queues;
         }
+		adaptExt->num_queues = 1;
     }
     
 

@@ -1,4 +1,5 @@
 @echo off
+set _VENDOR_=Skyport
 call tools\build.bat virtio-win.sln "Wxp Wnet Wlh Win7 Win8 Win8.1 Win10" %*
 if errorlevel 1 goto :fail
 call tools\build.bat NetKVM\NetKVM-VS2015.vcxproj "Win10_SDV" %*

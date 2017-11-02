@@ -1,9 +1,9 @@
 ;------------------------------------------------------------------------------- 
 ; netkvm.INF 
 ; 
-; Red Hat VirtIO Ethernet Adapter 
+; Skyport Systems VirtIO Ethernet Adapter 
 ; 
-; Copyright (c) 2008-2017 Red Hat, Inc.  All rights reserved. 
+; Copyright (c) 2017 Skyport Systems, Inc.  All rights reserved. 
 ; 
 ;------------------------------------------------------------------------------- 
  
@@ -12,15 +12,15 @@ Signature   = "$Windows NT$"
 Class       = Net 
 CatalogFile = netkvm.cat 
 ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318} 
-Provider    = %RedHat% 
+Provider    = %SkyportSystems% 
 DriverVer   = 03/15/2013,1.0.0.0 
 DriverPackageType = PlugAndPlay 
 DriverPackageDisplayName = %kvmnet6.DeviceDesc% 
  
 [Manufacturer] 
-%RedHat% = RedHat, NT$ARCH$
+%SkyportSystems% = SkyportSystems, NT$ARCH$
  
-[RedHat.NT$ARCH$] 
+[SkyportSystems.NT$ARCH$] 
 %kvmnet6.DeviceDesc%    = kvmnet6.ndi, PCI\VEN_1AF4&DEV_1000&SUBSYS_00011AF4&REV_00
 %kvmnet6.DeviceDesc%    = kvmnet6.ndi, PCI\VEN_1AF4&DEV_1041&SUBSYS_11001AF4&REV_01
  
@@ -49,7 +49,7 @@ CopyFiles       = kvmnet6.CopyFiles
 AddService      = netkvm, 2, kvmnet6.Service, kvmnet6.EventLog 
  
 ;----------------------------------------------------------------------------- 
-; Red Hat ParaVirtualized Miniport Common 
+; Skyport Systems ParaVirtualized Miniport Common 
 ;----------------------------------------------------------------------------- 
  
 [kvmnet6.Reg] 
@@ -280,10 +280,10 @@ netkvm.sys  = 1,,
 kvmnet6.CopyFiles = 12 
  
 [Strings] 
-RedHat = "Red Hat, Inc." 
-kvmnet6.DeviceDesc        = "Red Hat VirtIO Ethernet Adapter" 
-kvmnet6.Service.DispName    = "Red Hat VirtIO Ethernet Adapter Service" 
-DiskId1 = "Red Hat VirtIO Ethernet Adapter Driver Disk #1" 
+SkyportSystems = "Skyport Systems, Inc." 
+kvmnet6.DeviceDesc        = "Skyport Systems VirtIO Ethernet Adapter" 
+kvmnet6.Service.DispName    = "Skyport Systems VirtIO Ethernet Adapter Service" 
+DiskId1 = "Skyport Systems VirtIO Ethernet Adapter Driver Disk #1" 
 NetworkAddress = "Assign MAC" 
 ConnectRate = "Init.ConnectionRate(Mb)" 
 Priority = "Init.Do802.1PQ" 
